@@ -2,7 +2,6 @@ package com.azonma.web.services;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.azonma.model.Provincia;
+import com.azonma.service.ProvinciaService;
+import com.azonma.service.impl.ProvinciaServiceImpl;
 import com.google.gson.Gson;
 
 @WebServlet("/provinciaws")
@@ -30,28 +30,40 @@ public class ProviciaServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String method = request.getParameter("m");
-		if("nombre".equalsIgnoreCase(method)) {
-			String nombre = request.getParameter("nombre");
-			try {
+		try {
+			
+			Object result = null;
+			String method = request.getParameter("m");
+			if ("nombre".equalsIgnoreCase(method)) {
+				String nombre = request.getParameter("nombre");
+
+				logger.debug("Buscando provincias con {}", nombre);				
+				result = provinciaService.findByNombre(nombre);				
 				
-				List<Provincia> results = provinciaService.findByNombre(nombre);
-				Gson gson = new Gson();
-				String json = gson.toJson(results); 
-
-				PrintWriter out = response.getWriter();
-				response.setContentType("application/json");
-				response.setCharacterEncoding("UTF-8");
-				out.print(json); 
-				out.flush();
-
-			}catch (Exception e) {
-				logger.error(request.getParameterMap()); 
+			} else if ("pais".equalsIgnoreCase(method)) {	
+				
+				String pais = request.getParameter("pais");								
+				// validaciones
+				// ...
+				Long idPais = Long.valueOf(pais);				
+				logger.debug("Buscando provincias pais {}",  pais);				
+				result = provinciaService.findByPais(idPais);
+			} else {
+				logger.warn("Unknown requested method: {}", method);
 			}
-		}else if("pais".equalsIgnoreCase(method)){
+			
+			Gson gson = new Gson();				
+			String json = gson.toJson(result);				
+			logger.debug(json);
 
-		}else{
-			logger.warn("Unknown raquest method: {}", method);
+			PrintWriter out = response.getWriter();
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			out.print(json);
+			out.flush();	
+			
+		}catch (Exception e) {
+			logger.error(request.getParameterMap()); 
 		}
 	}
 
