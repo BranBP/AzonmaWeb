@@ -1,5 +1,4 @@
-<%@ page
-	import="com.azonma.web.util.*, java.util.*, com.azonma.model.*"%>
+<%@ page import="com.azonma.web.util.*, java.util.*, com.azonma.model.*"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,7 +14,7 @@
 				<input type="date" name="calendario"> <a href="home.html"><img
 					src="/Azonma/img/azonma/home.png" alt="Home" title="Home" /></a> <a
 					href="https://www.google.com/maps" target="blank"><img
-					src="/Azonma/img/azonma/ubicacion.png" alt="Ubicación"
+					src="/Azonma/img/web/ubicacion.png" alt="Ubicación"
 					title="Ubicación"></a> <a href="http://www.amazon.es"
 					target="blank"><img src="/Azonma/img/azonma/azonma.png"
 					alt="logoAzonma" title="Azonma" /></a> <select name="Idiomas">
@@ -35,8 +34,7 @@
 					value="<%=ActionNames.SEARCH%>" />
 				<div>
 					<input type="search" name="<%=ParameterNames.NOMBRE%>"
-						placeholder="Buscar...">
-					<select name="Filtros">
+						placeholder="Buscar..."> <select name="Filtros">
 						<option value="nada" selected>Filtrar por...</option>
 						<optgroup label="Precio">
 							<option value="p1">0€ - 1€</option>

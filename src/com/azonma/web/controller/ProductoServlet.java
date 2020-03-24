@@ -60,6 +60,7 @@ public class ProductoServlet extends HttpServlet {
 		} else if (ActionNames.DETAIL.equalsIgnoreCase(action)) {
 
 			String idProductoPar = request.getParameter(ParameterNames.ID_PRODUCTO);
+			
 			Long idProducto = null; 
 
 			try {

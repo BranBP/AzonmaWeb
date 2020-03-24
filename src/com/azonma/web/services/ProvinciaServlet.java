@@ -17,13 +17,13 @@ import com.azonma.service.impl.ProvinciaServiceImpl;
 import com.google.gson.Gson;
 
 @WebServlet("/provinciaws")
-public class ProviciaServlet extends HttpServlet {
+public class ProvinciaServlet extends HttpServlet {
 
-	private static Logger logger = LogManager.getLogger(ProviciaServlet.class.getName());
+	private static Logger logger = LogManager.getLogger(ProvinciaServlet.class.getName()); 
 
 	private ProvinciaService provinciaService = null;
 
-	public ProviciaServlet() {
+	public ProvinciaServlet() {
 		super(); 
 		provinciaService = new ProvinciaServiceImpl();
 	}
