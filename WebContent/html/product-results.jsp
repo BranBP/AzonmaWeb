@@ -1,4 +1,4 @@
-<%@ page import="java.util.List, com.azonma.model.Producto"%>
+<%@ page import="java.util.List, com.azonma.model.Producto, com.azonma.web.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,7 @@
 <body>
 
 	<%
-		List<Producto> productos = (List<Producto>) request.getAttribute("resultados");
+		List<Producto> productos = (List<Producto>) request.getAttribute(AttributeNames.PRODUCTOS);
 	
 		if (productos != null) {
 			for (Producto p : productos) {

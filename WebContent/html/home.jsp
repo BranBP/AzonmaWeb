@@ -33,15 +33,15 @@
 				<input type="hidden" name="<%=ParameterNames.ACTION%>"
 					value="<%=ActionNames.SEARCH%>" />
 				<div>
-					<input type="search" name="<%=ParameterNames.NOMBRE%>"
-						placeholder="Buscar..."> <select name="Filtros">
+					<input type="search" name="<%=ParameterNames.PRECIO_DESDE%>"
+						placeholder="Buscar..."> <select name="Filtros"
+						name="<%=ParameterNames.PRECIO_DESDE%>">
 						<option value="nada" selected>Filtrar por...</option>
-						<optgroup label="Precio">
-							<option value="p1">0€ - 1€</option>
-							<option value="p2">1€ - 10€</option>
-							<option value="p3">10€ - 50€</option>
-							<option value="p4">50€ - 100€</option>
-							<option value="p5">Mayor a 100€</option>
+						<optgroup label="Precio Desde">
+							<option value="0">0</option>
+							<option value="1">1</option>
+							<option value="10">10</option>
+							<option value="50">50</option>
 						</optgroup>
 						<optgroup label="Valoración">
 							<option value="v1">1 estrella</option>
