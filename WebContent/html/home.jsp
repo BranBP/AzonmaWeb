@@ -30,8 +30,8 @@
 				</p>
 			</div>
 			<form action="<%=ControllerPaths.PRODUCTO%>" method="post">
-				<input type="hidden" name="<%=ParameterNames.ACTION%>"
-					value="<%=ActionNames.SEARCH%>" />
+				<input type="hidden" name="<%=ParameterNames.ACCION%>"
+					value="<%=ActionNames.BUSQUEDA%>" />
 				<div>
 					<input type="search" name="<%=ParameterNames.PRECIO_DESDE%>"
 						placeholder="Buscar..."> <select name="Filtros"
@@ -71,9 +71,9 @@
 			<%
 				List<Producto> productos = (List<Producto>) request.getAttribute(AttributeNames.PRODUCTOS);
 
-				if (productos != null) {
+					if (productos != null) {
 
-					for (Producto p : productos) {
+						for (Producto p : productos) {
 			%>
 			<div>
 				<a
@@ -84,7 +84,7 @@
 						src="/Azonma/img/azonma/estrella.png" alt="Valoración" /><%=p.getPrecio()%>€
 				</p>
 				<a
-					href="/Azonma/producto?<%=ParameterNames.ACTION%>=<%=ActionNames.DETAIL%>&<%=ParameterNames.ID_PRODUCTO%>=<%=p.getIdProducto()%>"><%=p.getNombre()%></a>
+					href="/Azonma/producto?<%=ParameterNames.ACCION%>=<%=ActionNames.DETALLE%>&<%=ParameterNames.ID_PRODUCTO%>=<%=p.getIdProducto()%>"><%=p.getNombre()%></a>
 			</div>
 			<%
 				} // for

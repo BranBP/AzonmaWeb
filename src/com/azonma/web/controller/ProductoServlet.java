@@ -18,6 +18,7 @@ import com.azonma.service.ProductoService;
 import com.azonma.service.impl.ProductoServiceImpl;
 import com.azonma.web.util.ActionNames;
 import com.azonma.web.util.AttributeNames;
+import com.azonma.web.util.Errors;
 import com.azonma.web.util.ParameterNames;
 import com.azonma.web.util.ViewPaths;
 
@@ -34,52 +35,66 @@ public class ProductoServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String action = request.getParameter(ParameterNames.ACTION);  
+		String action = request.getParameter(ParameterNames.ACCION);  
 		String target = null;
 
-		if (ActionNames.SEARCH.equalsIgnoreCase(action)) {
+		if (ActionNames.BUSQUEDA.equalsIgnoreCase(action)) {
 
 			String precioDesdePar = request.getParameter(ParameterNames.PRECIO_DESDE);
 			String precioHastaPar = request.getParameter(ParameterNames.PRECIO_HASTA); 
-			String nombre = request.getParameter(ParameterNames.NOMBRE);   
-			String valoracionPar = request.getParameter(ParameterNames.VALORACION);  
-			
+			String nombre = request.getParameter(ParameterNames.PRODUCTO);   
+			String valoracionPar = request.getParameter(ParameterNames.VALORACION);   
+
 			ProductoCriteria pc = new ProductoCriteria(); 
 			boolean hasErrors = false;
 
-			if(StringUtils.isBlank(precioDesdePar)) {
+			if(StringUtils.isBlank(precioDesdePar) || StringUtils.isBlank(precioHastaPar)){
 				hasErrors = true;
-				request.setAttribute(AttributeNames.ERROR_PRECIO, Errors.REQUIRED_FIELD);
-			}else {
-				// quitamos los espacios
-				precioDesdePar = precioDesdePar.trim();
-				// convertimos el string al tipo correspondiente
-				Double precioDesde = null;
-				try { 
-					precioDesde = Double.parseDouble(precioDesdePar);
-				}catch (NumberFormatException nfe) {
-					hasErrors = true;
-					request.setAttribute(AttributeNames.ERROR_PRECIO, Errors.INVALID_VALUE);
-				}
-				pc.setPrecioDesde(precioDesde);
+				request.setAttribute(AttributeNames.ERROR_PRECIO, Errors.CASILLA_REQUERIDA);  
+			}
+
+			if(StringUtils.isBlank(nombre)) {
+				hasErrors = true;
+				request.setAttribute(AttributeNames.ERROR_NOMBRE, Errors.CASILLA_REQUERIDA);  
+			}
+
+			if(StringUtils.isBlank(valoracionPar)) {
+				hasErrors = true;
+				request.setAttribute(AttributeNames.ERROR_VALORACION, Errors.CASILLA_REQUERIDA);   
 			}
 
 			if(hasErrors) {
-				target = ViewPaths.PRODUCTO_SEARCH; 
+				target = ViewPaths.BUSQUEDA; 
+			}else {
+				// quitamos los espacios
+				precioDesdePar = precioDesdePar.trim();
+				precioHastaPar = precioHastaPar.trim();
+				// convertimos el string al tipo correspondiente
+				Double precioDesde = null;
+				Double precioHasta = null;
+				try { 
+					precioDesde = Double.parseDouble(precioDesdePar); 
+					precioHasta = Double.parseDouble(precioHastaPar);  
+				}catch (NumberFormatException nfe) {
+					hasErrors = true;
+					request.setAttribute(AttributeNames.ERROR, Errors.VALOR_INVALIDO); 
+				}
+				pc.setPrecioDesde(precioDesde);
+				pc.setPrecioHasta(precioHasta);
 			}
 
 			try {
 
-				List<Producto> productos = productoService.findByCriteria(pc, 1, Integer.MAX_VALUE);
+				List<Producto> productos = productoService.findByCriteria(pc, 1, Integer.MAX_VALUE); 
 				request.setAttribute(AttributeNames.PRODUCTOS, productos);
 
-				request.getRequestDispatcher(ViewPaths.PRODUCTO_SEARCH).forward(request, response);
+				request.getRequestDispatcher(target).forward(request, response);  
 
 			} catch (DataException e) {
 				e.printStackTrace();
 			} 
 
-		} else if (ActionNames.DETAIL.equalsIgnoreCase(action)) {
+		} else if (ActionNames.DETALLE.equalsIgnoreCase(action)) {
 
 			String idProductoPar = request.getParameter(ParameterNames.ID_PRODUCTO);
 
@@ -90,7 +105,7 @@ public class ProductoServlet extends HttpServlet {
 				Producto producto = productoService.findById(idProducto);  
 				request.setAttribute(AttributeNames.PRODUCTOS, producto);
 
-				request.getRequestDispatcher(ViewPaths.PRODUCTO_DETAIL).forward(request, response);
+				request.getRequestDispatcher(target).forward(request, response); 
 
 			} catch (DataException e) {
 				e.printStackTrace();
