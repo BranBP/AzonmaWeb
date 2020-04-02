@@ -33,15 +33,22 @@
 				<input type="hidden" name="<%=ParameterNames.ACCION%>"
 					value="<%=ActionNames.BUSQUEDA%>" />
 				<div>
-					<input type="search" name="<%=ParameterNames.PRECIO_DESDE%>"
+					<%
+						if (request.getAttribute(AttributeNames.ERROR_NOMBRE) != null) {
+					%>
+					<%=request.getAttribute(AttributeNames.ERROR_NOMBRE)%>
+					<%
+						}
+					%>
+					<input type="search" name="<%=ParameterNames.PRODUCTO%>"
 						placeholder="Buscar..."> <select name="Filtros"
 						name="<%=ParameterNames.PRECIO_DESDE%>">
 						<option value="nada" selected>Filtrar por...</option>
 						<optgroup label="Precio Desde">
-							<option value="0">0</option>
-							<option value="1">1</option>
-							<option value="10">10</option>
-							<option value="50">50</option>
+							<option value="0">0€</option>
+							<option value="1">1€</option>
+							<option value="10">10€</option>
+							<option value="50">50€</option>
 						</optgroup>
 						<optgroup label="Valoración">
 							<option value="v1">1 estrella</option>
@@ -71,9 +78,9 @@
 			<%
 				List<Producto> productos = (List<Producto>) request.getAttribute(AttributeNames.PRODUCTOS);
 
-					if (productos != null) {
+				if (productos != null) {
 
-						for (Producto p : productos) {
+					for (Producto p : productos) {
 			%>
 			<div>
 				<a

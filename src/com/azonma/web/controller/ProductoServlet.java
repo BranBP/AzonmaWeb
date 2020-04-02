@@ -63,36 +63,41 @@ public class ProductoServlet extends HttpServlet {
 				request.setAttribute(AttributeNames.ERROR_VALORACION, Errors.CASILLA_REQUERIDA);   
 			}
 
-			if(hasErrors) {
-				target = ViewPaths.BUSQUEDA; 
-			}else {
-				// quitamos los espacios
-				precioDesdePar = precioDesdePar.trim();
-				precioHastaPar = precioHastaPar.trim();
-				// convertimos el string al tipo correspondiente
-				Double precioDesde = null;
-				Double precioHasta = null;
-				try { 
-					precioDesde = Double.parseDouble(precioDesdePar); 
-					precioHasta = Double.parseDouble(precioHastaPar);  
-				}catch (NumberFormatException nfe) {
-					hasErrors = true;
-					request.setAttribute(AttributeNames.ERROR, Errors.VALOR_INVALIDO); 
-				}
-				pc.setPrecioDesde(precioDesde);
-				pc.setPrecioHasta(precioHasta);
+			// quitamos los espacios
+			precioDesdePar = precioDesdePar.trim();
+			precioHastaPar = precioHastaPar.trim();
+
+			// convertimos el string al tipo correspondiente
+			Double precioDesde = null;
+			Double precioHasta = null;
+			try { 
+				precioDesde = Double.parseDouble(precioDesdePar); 
+				precioHasta = Double.parseDouble(precioHastaPar);  
+			}catch (NumberFormatException nfe) {
+				hasErrors = true;
+				request.setAttribute(AttributeNames.ERROR, Errors.VALOR_INVALIDO); 
 			}
 
-			try {
+			// introducimos los datos en el criteria
+			pc.setPrecioDesde(precioDesde);
+			pc.setPrecioHasta(precioHasta);
 
-				List<Producto> productos = productoService.findByCriteria(pc, 1, Integer.MAX_VALUE); 
-				request.setAttribute(AttributeNames.PRODUCTOS, productos);
+			if(hasErrors) {
+				target = ViewPaths.HOME;   
+			}else {
+				// Se continúa cn las operaciones
+				try {
 
-				request.getRequestDispatcher(target).forward(request, response);  
+					List<Producto> productos = productoService.findByCriteria(pc, 1, Integer.MAX_VALUE); 
+					request.setAttribute(AttributeNames.PRODUCTOS, productos);  
 
-			} catch (DataException e) {
-				e.printStackTrace();
-			} 
+				} catch (DataException e) {
+					e.printStackTrace();
+				} 
+				target = ViewPaths.RESULTADOS;  
+			}
+
+			request.getRequestDispatcher(target).forward(request, response); 
 
 		} else if (ActionNames.DETALLE.equalsIgnoreCase(action)) {
 
