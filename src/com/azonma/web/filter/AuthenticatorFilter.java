@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 import com.azonma.model.Usuario;
+import com.azonma.web.util.AttributeNames;
+import com.azonma.web.util.SessionManager;
 
 /**
  * Filtro de autenticación de áreas protegidas.
@@ -30,7 +32,7 @@ public class AuthenticatorFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		String url = httpRequest.getRequestURL().toString();
 		if(url.contains()) {
-			Usuario usuario = SessionManager.get(httpRequest, AtributeNames.USER);
+			Usuario usuario = SessionManager.get(httpRequest, AttributeNames.USER);
 
 			if(u==null) {
 

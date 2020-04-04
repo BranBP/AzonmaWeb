@@ -1,6 +1,7 @@
 package com.azonma.web.filter;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -35,7 +36,7 @@ public class HelloWorldFilter implements Filter {
 
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		
-		Map <String, String[]> parametros =  request.getParameterMap();
+		Map <String, String[]> parametros = request.getParameterMap();
 		
 		String parameterName;
 		String[]parameterValues;
@@ -48,9 +49,8 @@ public class HelloWorldFilter implements Filter {
 			
 			parameterValues = parametros.get(parameterName);
 			
-			logger.info(parameterName+"="+parameterValues);
+			logger.info(parameterName +" = "+ Arrays.toString(parameterValues)); 
 		}
-
 
 		chain.doFilter(request, response);
 

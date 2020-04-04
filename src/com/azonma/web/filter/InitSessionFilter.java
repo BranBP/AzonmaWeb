@@ -1,4 +1,4 @@
-package com.gzone.ecommerce.web.filter;
+package com.azonma.web.filter; 
 
 import java.io.IOException;
 
@@ -14,9 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.gzone.ecommerce.web.controller.SessionAttributeNames;
-import com.gzone.ecommerce.web.model.ShoppingCart;
-import com.gzone.ecommerce.web.util.SessionManager;
+import com.azonma.web.util.SessionManager;
 
 
 public class InitSessionFilter implements Filter {
