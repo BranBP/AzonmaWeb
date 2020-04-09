@@ -1,8 +1,8 @@
         <div id="pie">
-            <a href="">PolÃ­tica de privacidad</a>
-            <a href="">TÃ©rminos de uso</a>
+            <a href="">Política de privacidad</a>
+            <a href="">Términos de uso</a>
             <a href="">Ayuda</a>
-            <a href="">InformaciÃ³n</a>
+            <a href="">Información</a>
         </div>
     </div>
 </body>

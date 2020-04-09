@@ -46,76 +46,77 @@ public class ProductoServlet extends HttpServlet {
 
 		if (ActionNames.BUSQUEDA.equalsIgnoreCase(accion)) { 
 
-			String precioDesdePar = request.getParameter(ParameterNames.PRECIO_DESDE);
-			String precioHastaPar = request.getParameter(ParameterNames.PRECIO_HASTA); 
+			//			String precioDesdePar = request.getParameter(ParameterNames.PRECIO_DESDE);
+			//			String precioHastaPar = request.getParameter(ParameterNames.PRECIO_HASTA); 
 			String nombreProducto = request.getParameter(ParameterNames.PRODUCTO);    
-			String valoracionPar = request.getParameter(ParameterNames.VALORACION);   
+			//			String valoracionPar = request.getParameter(ParameterNames.VALORACION);   
 
 			ProductoCriteria pc = new ProductoCriteria(); 
 			boolean hasErrors = false;
 
-			if(StringUtils.isBlank(precioDesdePar) || StringUtils.isBlank(precioHastaPar)){
-				hasErrors = true;
-				request.setAttribute(AttributeNames.ERROR_PRECIO, Errors.CASILLA_REQUERIDA);  
-			}
- 
+			//			if(StringUtils.isBlank(precioDesdePar) || StringUtils.isBlank(precioHastaPar)){
+			//				hasErrors = true;
+			//				request.setAttribute(AttributeNames.ERROR_PRECIO, Errors.CASILLA_REQUERIDA);  
+			//			}
+
 			if(StringUtils.isBlank(nombreProducto)) {
 				hasErrors = true;
 				request.setAttribute(AttributeNames.ERROR_NOMBRE, Errors.CASILLA_REQUERIDA);  
 			}
 
-			if(StringUtils.isBlank(valoracionPar)) {
-				hasErrors = true;
-				request.setAttribute(AttributeNames.ERROR_VALORACION, Errors.CASILLA_REQUERIDA);   
-			}
+			//			if(StringUtils.isBlank(valoracionPar)) {
+			//				hasErrors = true;
+			//				request.setAttribute(AttributeNames.ERROR_VALORACION, Errors.CASILLA_REQUERIDA);   
+			//			}
 
 			// quitamos los espacios
-			precioDesdePar = precioDesdePar.trim();
-			precioHastaPar = precioHastaPar.trim();
+			//			precioDesdePar = precioDesdePar.trim();
+			//			precioHastaPar = precioHastaPar.trim();
 			nombreProducto = nombreProducto.trim();
 
 			// convertimos el string al tipo correspondiente
-			Double precioDesde = null;
-			Double precioHasta = null; 
+			//			Double precioDesde = null;
+			//			Double precioHasta = null; 
 
-			try { 
-				precioDesde = Double.parseDouble(precioDesdePar); 
-				precioHasta = Double.parseDouble(precioHastaPar); 
-			}catch (NumberFormatException nfe) { 
-				hasErrors = true;
-				request.setAttribute(AttributeNames.ERROR, Errors.VALOR_INVALIDO); 
-				logger.error("Error. Conversión de los String erróneas");
-			}
+			//			try { 
+			//				precioDesde = Double.parseDouble(precioDesdePar); 
+			//				precioHasta = Double.parseDouble(precioHastaPar); 
+			//			}catch (NumberFormatException nfe) { 
+			//				hasErrors = true;
+			//				request.setAttribute(AttributeNames.ERROR, Errors.VALOR_INVALIDO); 
+			//				logger.error("Error. Conversión de los String erróneas");
+			//			}
 
 			// introducimos los datos en el criteria
-			if(precioDesde!=null) {
-				pc.setPrecioDesde(precioDesde);
-			}
+			//			if(precioDesde!=null) {
+			//				pc.setPrecioDesde(precioDesde);
+			//			}
 
-			if(precioHasta!=null) {
-				pc.setPrecioHasta(precioHasta);
-			}
+			//			if(precioHasta!=null) {
+			//				pc.setPrecioHasta(precioHasta);
+			//			}
 
 			if(nombreProducto!=null) {
 				pc.setNombre(nombreProducto);
 			}
+			//
+			//			if(hasErrors) {
+			//				target = ViewPaths.RESULTADOS;    
+			//			}else {
 
-			if(hasErrors) {
-				target = ViewPaths.RESULTADOS;    
-			}else { 
-				// Se continúa cn las operaciones
-				target = ViewPaths.RESULTADOS;  
-				try {
+			// Se continúa cn las operaciones
+			target = ViewPaths.RESULTADOS;  
+			try {
 
-					List<Producto> productos = productoService.findByCriteria(pc, 1, Integer.MAX_VALUE); 
+				List<Producto> productos = productoService.findByCriteria(pc, 1, Integer.MAX_VALUE); 
 
-					request.setAttribute(AttributeNames.PRODUCTOS, productos);  
+				request.setAttribute(AttributeNames.PRODUCTOS, productos);  
 
-				} catch (DataException e) {
-					logger.error(WebUtils.prettyParameters(request));
-					request.setAttribute(AttributeNames.ERROR, Errors.ERROR_GENERAL);  
-				} 
-			}
+			} catch (DataException e) {
+				logger.error(WebUtils.prettyParameters(request));
+				request.setAttribute(AttributeNames.ERROR, Errors.ERROR_GENERAL);  
+			} 
+			//			}
 
 
 		} else if (ActionNames.DETALLE.equalsIgnoreCase(accion)) {

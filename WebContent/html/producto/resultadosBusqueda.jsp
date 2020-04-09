@@ -1,4 +1,5 @@
-<%@ page import="java.util.List, com.azonma.model.Producto, com.azonma.web.util.*"%>
+<%@ page
+	import="java.util.List, com.azonma.model.Producto, com.azonma.web.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>

@@ -25,18 +25,23 @@ body{
 }
 
 #cabecera > div{
+    height: 50px;
+    padding-top: 10px;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: center;
     text-align: center;
-    height: 50px;
 }
 
-#cabecera > form > div{
-    text-align: center;
+#buscar{
+    height: 50%;
+    border-radius: 10px;
+    font-family: Impact;
 }
 
 #categorias > button{
+    height: 50%;
     width: 10%;
     border-radius: 10px;
     font-family: Impact;
@@ -44,7 +49,7 @@ body{
     background-color: #ff9900;
 }
 
-#categorias > button:hover{
+#categorias > button:hover, #buscar:hover{
     transform: translateY(-4px);
     box-shadow: 5px 5px lightblue;
 }
@@ -53,6 +58,12 @@ body{
     transform: translateX(4px);
     box-shadow: 0px 0px;  
     background-color: darkorange;
+    border: 2px black solid;
+}
+
+#buscar:active{
+    transform: translateX(4px);
+    box-shadow: 0px 0px;  
     border: 2px black solid;
 }
 
@@ -100,8 +111,8 @@ body{
 }
 
 #img > div > a > img:active{
-    border: 3px solid #ff9900;
-    transform: translateX(4px);
+    border: 1px solid #ff9900;
+    transform: translateX(3px);
     box-shadow: none;
 }
 
@@ -256,9 +267,33 @@ body{
     border: 2px black solid;
 }
 
+#pie{
+    padding: 10px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    border: 1px solid black;
+}
+
+#pie > a{
+    color: blue;
+}
+
+#pie > a:hover, #pie > a:visited{
+    color: darkblue;
+}
+
+#pie > a:active{
+    color: black;
+}
+
 .rojo{
     color: red;
     font-weight: bold;
+}
+
+hr{
+    border: 1px dashed lightgray;
 }
 
 th{
@@ -286,6 +321,7 @@ img[src*=home], img[src*=carrito], img[src*=ubicacion], input[type*=number]{
 img[src*='azonma.png']{
     height: 80px;
 }
+
 img[src*=enviar]{
     height: 25px;
 }
