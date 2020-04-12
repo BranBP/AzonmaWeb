@@ -46,77 +46,71 @@ public class ProductoServlet extends HttpServlet {
 
 		if (ActionNames.BUSQUEDA.equalsIgnoreCase(accion)) { 
 
-			//			String precioDesdePar = request.getParameter(ParameterNames.PRECIO_DESDE);
-			//			String precioHastaPar = request.getParameter(ParameterNames.PRECIO_HASTA); 
+			String precioDesdePar = request.getParameter(ParameterNames.PRECIO_DESDE);
+			String precioHastaPar = request.getParameter(ParameterNames.PRECIO_HASTA); 
 			String nombreProducto = request.getParameter(ParameterNames.PRODUCTO);    
-			//			String valoracionPar = request.getParameter(ParameterNames.VALORACION);   
+			String minValPar = request.getParameter(ParameterNames.VALORACION);   
 
 			ProductoCriteria pc = new ProductoCriteria(); 
 			boolean hasErrors = false;
 
-			//			if(StringUtils.isBlank(precioDesdePar) || StringUtils.isBlank(precioHastaPar)){
-			//				hasErrors = true;
-			//				request.setAttribute(AttributeNames.ERROR_PRECIO, Errors.CASILLA_REQUERIDA);  
-			//			}
-
-			if(StringUtils.isBlank(nombreProducto)) {
-				hasErrors = true;
-				request.setAttribute(AttributeNames.ERROR_NOMBRE, Errors.CASILLA_REQUERIDA);  
-			}
-
-			//			if(StringUtils.isBlank(valoracionPar)) {
-			//				hasErrors = true;
-			//				request.setAttribute(AttributeNames.ERROR_VALORACION, Errors.CASILLA_REQUERIDA);   
-			//			}
-
 			// quitamos los espacios
-			//			precioDesdePar = precioDesdePar.trim();
-			//			precioHastaPar = precioHastaPar.trim();
+			precioDesdePar = precioDesdePar.trim();
+			precioHastaPar = precioHastaPar.trim();
 			nombreProducto = nombreProducto.trim();
+			minValPar = minValPar.trim();
 
 			// convertimos el string al tipo correspondiente
-			//			Double precioDesde = null;
-			//			Double precioHasta = null; 
+			Double precioDesde = null;
+			Double precioHasta = null; 
+			Integer minVal = null; 
 
-			//			try { 
-			//				precioDesde = Double.parseDouble(precioDesdePar); 
-			//				precioHasta = Double.parseDouble(precioHastaPar); 
-			//			}catch (NumberFormatException nfe) { 
-			//				hasErrors = true;
-			//				request.setAttribute(AttributeNames.ERROR, Errors.VALOR_INVALIDO); 
-			//				logger.error("Error. Conversión de los String erróneas");
-			//			}
+			try {  
+
+				if(!StringUtils.isBlank(precioDesdePar)) {
+					precioDesde = Double.parseDouble(precioDesdePar);
+				}
+
+				if(!StringUtils.isBlank(precioHastaPar)) {
+					precioHasta = Double.parseDouble(precioHastaPar); 
+				}
+
+				if(!StringUtils.isBlank(minValPar)) { 
+					minVal = Integer.parseInt(minValPar);
+				}
+
+			}catch (NumberFormatException nfe) { 
+				hasErrors = true;
+				request.setAttribute(AttributeNames.ERROR, Errors.VALOR_INVALIDO); 
+				logger.error("Error. Conversión de los String erróneas");
+			}
 
 			// introducimos los datos en el criteria
-			//			if(precioDesde!=null) {
-			//				pc.setPrecioDesde(precioDesde);
-			//			}
-
-			//			if(precioHasta!=null) {
-			//				pc.setPrecioHasta(precioHasta);
-			//			}
+			pc.setPrecioDesde(precioDesde);
+			pc.setPrecioHasta(precioHasta);
+			pc.setMinVal(minVal);
 
 			if(nombreProducto!=null) {
 				pc.setNombre(nombreProducto);
 			}
-			//
-			//			if(hasErrors) {
-			//				target = ViewPaths.RESULTADOS;    
-			//			}else {
 
-			// Se continúa cn las operaciones
-			target = ViewPaths.RESULTADOS;  
-			try {
+			if(hasErrors) {
+				target = ViewPaths.RESULTADOS;    
+			}else {
 
-				List<Producto> productos = productoService.findByCriteria(pc, 1, Integer.MAX_VALUE); 
+				// Se continúa con las operaciones en la capa de negocio
+				target = ViewPaths.RESULTADOS;  
+				try {
 
-				request.setAttribute(AttributeNames.PRODUCTOS, productos);  
+					List<Producto> productos = productoService.findByCriteria(pc, 1, Integer.MAX_VALUE); 
 
-			} catch (DataException e) {
-				logger.error(WebUtils.prettyParameters(request));
-				request.setAttribute(AttributeNames.ERROR, Errors.ERROR_GENERAL);  
-			} 
-			//			}
+					request.setAttribute(AttributeNames.PRODUCTOS, productos);  
+
+				} catch (DataException e) {
+					logger.error(WebUtils.prettyParameters(request));
+					request.setAttribute(AttributeNames.ERROR, Errors.ERROR_GENERAL);  
+				} 
+			}
 
 
 		} else if (ActionNames.DETALLE.equalsIgnoreCase(accion)) {

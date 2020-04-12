@@ -1,11 +1,7 @@
-<%@page import="com.azonma.web.util.ActionNames"%>
-<%@page import="com.azonma.web.util.ParameterNames"%>
-<%@page import="com.azonma.web.util.ControllerPaths"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<%@page import="com.azonma.web.*, java.util.*, com.azonma.model.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@page import="com.azonma.web.util.*, java.util.*, com.azonma.model.*"%>
 <!DOCTYPE html>
-<html lang="es">
 <head>
 <meta charset="utf-8">
 <title>Azonma</title>
@@ -17,19 +13,18 @@
 	<div id="contenedor">
 		<div id="cabecera">
 			<div>
-				<input type="date" name="calendario" /> <a
-					href="/Azonma/html/home.jsp"><img
+				<a href="/Azonma/html/home.jsp"><img
 					src="/Azonma/img/web/home.png" alt="Home" title="Home" /></a> <a
 					href="https://www.google.com/maps" target="blank"><img
-					src="../../img/web/ubicacion.png" alt="UbicaciÃ³n"
-					title="UbicaciÃ³n"></a> <a href="http://www.amazon.es"
-					target="blank"><img src="../../img/web/azonma.png"
+					src="/Azonma/img/web/ubicacion.png" alt="Ubicación"
+					title="Ubicación"></a> <a href="/Azonma/html/home.jsp"
+					target="blank"><img src="/Azonma/img/web/azonma.png"
 					alt="logoAzonma" title="Azonma" /></a> <select name="Idiomas">
 					<option value="idioma" selected>Idioma</option>
 					<option value="espanol">Español</option>
 					<option value="ingles">English</option>
 					<option value="frances">Français</option>
-				</select> <a href="carrito.html"><img src="../../img/web/carrito.png"
+				</select> <a href="carrito.html"><img src="/Azonma/img/web/carrito.png"
 					alt="Carrito" title="Carrito" /></a>
 				<!-- Aquí iría la cuenta, login,...etc -->
 				<p>
@@ -41,20 +36,29 @@
 					<input type="hidden" name="<%=ParameterNames.ACCION%>"
 						value="<%=ActionNames.BUSQUEDA%>"> <input type="search"
 						name="<%=ParameterNames.PRODUCTO%>" placeholder="Buscar...">
-					<select name="precio">
-						<option value="null" selected>...</option>
-						<option value="p1">0€ - 1€</option>
-						<option value="p2">1€ - 10€</option>
-						<option value="p3">10€ - 50€</option>
-						<option value="p4">50€ - 100€</option>
-						<option value="p5">Mayor a 100€</option>
-					</select> <select name="precio">
-						<option value="null" selected>...</option>
-						<option value="v1">1 estrella</option>
-						<option value="v2">2 estrellas</option>
-						<option value="v3">3 estrellas</option>
-						<option value="v4">4 estrellas</option>
-						<option value="v5">5 estrellas</option>
+					<select name="<%=ParameterNames.PRECIO_DESDE%>">
+						<option selected value="">Precio desde</option>
+						<option value="0">0€</option>
+						<option value="1">1€</option>
+						<option value="10">10€</option>
+						<option value="50">50€</option>
+						<option value="100">100€</option>
+						<option value="1000">1000€</option>
+					</select> <select name="<%=ParameterNames.PRECIO_HASTA%>">
+						<option selected value="">Precio hasta</option>
+						<option value="1">1€</option>
+						<option value="10">10€</option>
+						<option value="50">50€</option>
+						<option value="100">100€</option>
+						<option value="1000">1000€</option>
+						<option value="10000">10000€</option>
+					</select> <select name="<%=ParameterNames.VALORACION%>">
+						<option selected value="">Valoración mínima</option>
+						<option value="0">0 estrellas</option>
+						<option value="1">1 estrella</option>
+						<option value="2">2 estrellas</option>
+						<option value="3">3 estrellas</option>
+						<option value="4">4 estrellas</option>
 					</select>
 					<button id="buscar">Buscar</button>
 				</form>

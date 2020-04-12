@@ -12,7 +12,7 @@ body{
 #contenedor{
     width: 1000px;
     padding: 10px;
-    border: 2px solid #ddd;
+    border: 3px solid #ddd;
     background-color: white;
 }
 
@@ -29,7 +29,7 @@ body{
     padding-top: 10px;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
 }
@@ -84,6 +84,7 @@ body{
     margin: 1px 0px;
     display: flex;
     align-items: center;
+    z-index: 2;
 }
 
 #img > div > a > img{
@@ -338,5 +339,5 @@ input[type*=search]{
 
 @font-face{
     font-family: Dumb;
-    src: url(../../../Letras/Dumb.ttf);
+    src: url(/Azonma/fonts/Dumb.ttf);
 }
