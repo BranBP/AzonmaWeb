@@ -52,6 +52,7 @@ public class ProductoServlet extends HttpServlet {
 			String minValPar = request.getParameter(ParameterNames.VALORACION);   
 
 			ProductoCriteria pc = new ProductoCriteria(); 
+
 			boolean hasErrors = false;
 
 			// quitamos los espacios
@@ -115,18 +116,23 @@ public class ProductoServlet extends HttpServlet {
 
 		} else if (ActionNames.DETALLE.equalsIgnoreCase(accion)) {
 
-			request.getParameter(ParameterNames.ID_PRODUCTO);
+			String idProductoPar = request.getParameter(ParameterNames.ID_PRODUCTO);
 
 			Long idProducto = null; 
 
 			try {
 
+				idProducto = Long.parseLong(idProductoPar);
+
 				Producto producto = productoService.findById(idProducto);  
 				request.setAttribute(AttributeNames.PRODUCTOS, producto); 
-				target = ViewPaths.DETALLE;   
+				target = ViewPaths.VISTA_DETALLE;    
 
 
-			} catch (DataException e) {
+			}catch (NumberFormatException nfe) {
+				request.setAttribute(AttributeNames.ERROR, Errors.VALOR_INVALIDO); 
+				logger.error("Error. Conversión de los String erróneas");
+			} catch (DataException de) { 
 				logger.error(WebUtils.prettyParameters(request));
 				request.setAttribute(AttributeNames.ERROR, Errors.ERROR_GENERAL);  
 			}

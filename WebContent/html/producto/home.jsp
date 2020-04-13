@@ -6,20 +6,20 @@
 	<%
 		List<Producto> productos = (List<Producto>) request.getAttribute(AttributeNames.PRODUCTOS);
 
-		request.getAttributeNames();
-		
 		if (productos != null) {
 			if (productos.size() != 0) {
 				for (Producto p : productos) {
 	%>
 	<div>
-		<a href="/Azonma/html/vistaDetalle.jsp"><img
-			src="/Azonma/img/product/<%=p.getIdProducto()%>/1.jpg"
-			alt="<%=p.getNombre()%>" /></a>
+		<a
+			href="<%=ControllerPaths.PRODUCTO%>?<%=ParameterNames.ACCION%>=<%=ActionNames.DETALLE%>&<%=ParameterNames.ID_PRODUCTO%>=<%=p.getIdProducto()%>">
+			<img src="<%=ImagePaths.PRODUCTO%><%=p.getIdProducto()%>/1.jpg"
+			alt="<%=p.getNombre()%>" />
+		</a>
 		<p>
 			<%
 				if (p.getValoracion() != 0d) {
-			%><%=p.getValoracion()%><img src="/Azonma/img/web/estrella.png"
+			%><%=p.getValoracion()%><img src="<%=ImagePaths.ESTRELLA%>"
 				alt="Valoración" />
 			<%
 				} else {
@@ -28,7 +28,9 @@
 				}
 			%><%=p.getPrecio()%>€
 		</p>
-		<a href="vistaDetalle.html"><%=p.getNombre()%></a><br />
+		<a
+			href="<%=ControllerPaths.PRODUCTO%>?<%=ParameterNames.ACCION%>=<%=ActionNames.DETALLE%>&<%=ParameterNames.ID_PRODUCTO%>=<%=p.getIdProducto()%>"><%=p.getNombre()%></a>
+		<br />
 	</div>
 	<%
 		}
@@ -41,4 +43,3 @@
 	%>
 </div>
 <%@include file="/html/common/footer.jsp"%>
-</html>

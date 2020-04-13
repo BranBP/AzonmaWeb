@@ -118,6 +118,7 @@ body{
 }
 
 #pago{
+	height: 400px;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
@@ -131,14 +132,18 @@ body{
     justify-content: space-between;
 }
 
+#vistas > div{
+	height: 120px;
+}
+
+#vistas > div > img{
+	height: 100%;
+    border: 2px solid black;
+}
+
 #grande{
     width: 40%;
     display: flex;
-}
-
-#vistas > img{
-    width: 50%;
-    border: 2px solid black;
 }
 
 #grande > img{
@@ -147,33 +152,16 @@ body{
 }
 
 #comprar{
+    width: 30%;
     padding: 10px;
     display: flex;
-    flex-flow: row wrap;
-    align-content: space-around;
-    text-align: center;
+    flex-flow: column;
+    justify-content: space-around;
     border: 2px solid black;
 }
 
-#comprar button{
-    width: 35%;
-    margin-right: 10px;
-    border-radius: 6px;
-    font-family: Impact;
-    border: 2px darkgoldenrod solid;
-    background-color: #ff9900;
-}
-
-#comprar button:hover{
-    transform: translateY(-4px);
-    box-shadow: 5px 5px lightblue;
-}
-
-#comprar button:active{
-    transform: translateX(4px);
-    box-shadow: 0px 0px;  
-    background-color: darkorange;
-    border: 2px black solid;
+#comprar > p, #comprar > h1{
+	text-align: center;
 }
 
 #resto > form{

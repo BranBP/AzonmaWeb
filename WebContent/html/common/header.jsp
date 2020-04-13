@@ -3,7 +3,7 @@
 <%@page import="com.azonma.web.util.*, java.util.*, com.azonma.model.*"%>
 <!DOCTYPE html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>Azonma</title>
 <link rel="stylesheet" href="/Azonma/css/azonma.css" media="screen" />
 <meta name="screen" content="width=device-width, initial-scale=1.0">
@@ -13,18 +13,17 @@
 	<div id="contenedor">
 		<div id="cabecera">
 			<div>
-				<a href="/Azonma/html/home.jsp"><img
-					src="/Azonma/img/web/home.png" alt="Home" title="Home" /></a> <a
-					href="https://www.google.com/maps" target="blank"><img
-					src="/Azonma/img/web/ubicacion.png" alt="Ubicación"
-					title="Ubicación"></a> <a href="/Azonma/html/home.jsp"
-					target="blank"><img src="/Azonma/img/web/azonma.png"
+				<a href="<%=ViewPaths.HOME%>"><img src="<%=ImagePaths.HOME%>"
+					alt="Home" title="Home" /></a> <a href="https://www.google.com/maps"
+					target="blank"><img src="<%=ImagePaths.UBICACION%>"
+					alt="Ubicación" title="Ubicación"></a> <a
+					href="<%=ViewPaths.HOME%>"><img src="<%=ImagePaths.LOGO%>"
 					alt="logoAzonma" title="Azonma" /></a> <select name="Idiomas">
 					<option value="idioma" selected>Idioma</option>
 					<option value="espanol">Español</option>
 					<option value="ingles">English</option>
 					<option value="frances">Français</option>
-				</select> <a href="carrito.html"><img src="/Azonma/img/web/carrito.png"
+				</select> <a href="carrito.html"><img src="<%=ImagePaths.CARRITO%>"
 					alt="Carrito" title="Carrito" /></a>
 				<!-- Aquí iría la cuenta, login,...etc -->
 				<p>
