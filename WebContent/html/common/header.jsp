@@ -18,12 +18,14 @@
 					target="blank"><img src="<%=ImagePaths.UBICACION%>"
 					alt="Ubicación" title="Ubicación"></a> <a
 					href="<%=ViewPaths.HOME%>"><img src="<%=ImagePaths.LOGO%>"
-					alt="logoAzonma" title="Azonma" /></a> <select name="Idiomas">
+					alt="logoAzonma" title="Azonma" /></a>
+				<!-- <select name="Idiomas">
 					<option value="idioma" selected>Idioma</option>
 					<option value="espanol">Español</option>
 					<option value="ingles">English</option>
 					<option value="frances">Français</option>
-				</select> <a href="carrito.html"><img src="<%=ImagePaths.CARRITO%>"
+				</select> -->
+				<a href="carrito.html"><img src="<%=ImagePaths.CARRITO%>"
 					alt="Carrito" title="Carrito" /></a>
 				<!-- Aquí iría la cuenta, login,...etc -->
 				<p>

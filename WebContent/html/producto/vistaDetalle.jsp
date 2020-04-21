@@ -4,6 +4,7 @@
 <%@include file="/html/common/header.jsp"%>
 <%
 	Producto p = (Producto) request.getAttribute(AttributeNames.PRODUCTOS);
+	if (p.getNombre() != null) {
 %>
 <div id="pago">
 	<div id="vistas">
@@ -27,56 +28,51 @@
 	</div>
 
 	<div id="comprar">
-		<h1><%=p.getNombre()%></h1>
-		<p>Precio por unidad . . . <%=p.getPrecio()%>€</p>
-		<p><i><%=p.getDescripcion()%>.</i></p>
-	</div>
-</div>
-
-<div id="resto">
-	<form action="vistaDetalle.html">
 		<div>
-			<h2>Comentarios</h2>
-			<div>
-				<input type="text" placeholder="Escriba aquÃ­...">
-				<button>
-					<img onmouseout="this.src='../img/azonma/enviar.png'"
-						onmouseover="this.src='../img/azonma/enviarRelleno.png'"
-						src="../img/azonma/enviar.png" alt="Enviar" />
-				</button>
-			</div>
+			<h1><%=p.getNombre()%></h1>
 			<p>
-				<span class="rojo">Jorge:</span> Son unos zapatos muy buenos, los
-				recomiendo <br /> <span class="rojo">AndrÃ©:</span> Son unos
-				zapatos horribles, no los recomiendo <br /> <span class="rojo">ElÃ­as:</span>
-				Son unos zapatos decentes <br /> ...
+				<i><%=p.getDescripcion()%>.</i>
 			</p>
 		</div>
-
 		<div>
-			<h3>Valorar</h3>
-			<div>
-				<img onmouseout="this.src='../img/azonma/estrellaVacia.png'"
-					onmouseover="this.src='../img/azonma/estrellaRellenada.png'"
-					src="../img/azonma/estrellaVacia.png"> <img
-					onmouseout="this.src='../img/azonma/estrellaVacia.png'"
-					onmouseover="this.src='../img/azonma/estrellaRellenada.png'"
-					src="../img/azonma/estrellaVacia.png"> <img
-					onmouseout="this.src='../img/azonma/estrellaVacia.png'"
-					onmouseover="this.src='../img/azonma/estrellaRellenada.png'"
-					src="../img/azonma/estrellaVacia.png"> <img
-					onmouseout="this.src='../img/azonma/estrellaVacia.png'"
-					onmouseover="this.src='../img/azonma/estrellaRellenada.png'"
-					src="../img/azonma/estrellaVacia.png"> <img
-					onmouseout="this.src='../img/azonma/estrellaVacia.png'"
-					onmouseover="this.src='../img/azonma/estrellaRellenada.png'"
-					src="../img/azonma/estrellaVacia.png">
-				<button>
-					<img onmouseout="this.src='../img/azonma/enviar.png'"
-						onmouseover="this.src='../img/azonma/enviarRelleno.png'"
-						src="../img/azonma/enviar.png" alt="Enviar" />
-				</button>
-			</div>
+			<p>
+				Precio por unidad
+				<%=p.getPrecio()%>€
+			</p>
+			<p>
+				<i> <small>
+						<%
+							if (p.getValoracion() != 0d) {
+						%> Valoración media: <%=p.getValoracion()%>
+						<%
+							} else {
+						%> Sin valoración <%
+							}
+						%>
+				</small></i>
+			</p>
+			<p>
+				<img alt="" src="<%=ImagePaths.ESTRELLA_VACIA%>"> <img alt=""
+					src="<%=ImagePaths.ESTRELLA_VACIA%>"> <img alt=""
+					src="<%=ImagePaths.ESTRELLA_VACIA%>"> <img alt=""
+					src="<%=ImagePaths.ESTRELLA_VACIA%>"> <img alt=""
+					src="<%=ImagePaths.ESTRELLA_VACIA%>">
+			</p>
 		</div>
+		<div>
+			<button>Comprar</button>
+			<button>Añadir al carrito</button>
+		</div>
+	</div>
 </div>
+<%
+	} else {
+%>
+
+<div id="img">
+	<h4>El producto no existe...</h4>
+</div>
+<%
+	}
+%>
 <%@include file="/html/common/footer.jsp"%>

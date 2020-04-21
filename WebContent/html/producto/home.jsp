@@ -36,7 +36,7 @@
 		}
 			} else {
 	%>
-	<h1>Criterios no encontrados...</h1>
+	<h4>Criterios no encontrados...</h4>
 	<%
 		}
 		}

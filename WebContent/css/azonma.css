@@ -1,331 +1,339 @@
-body{
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    background-color: #fff;
-    background-image:
-    linear-gradient(90deg, transparent 79px, lightblue 79px, darkblue 81px, transparent 81px),
-    linear-gradient(#ddd 0.1em, transparent 0.1em);
-    background-size: 100% 1.2em;
+body {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	background-color: #fff;
+	background-image: linear-gradient(90deg, transparent 79px, lightblue 79px, darkblue 81px,
+		transparent 81px), linear-gradient(#ddd 0.1em, transparent 0.1em);
+	background-size: 100% 1.2em;
 }
 
-#contenedor{
-    width: 1000px;
-    padding: 10px;
-    border: 3px solid #ddd;
-    background-color: white;
+#contenedor {
+	width: 1000px;
+	padding: 10px;
+	border: 3px solid #ddd;
+	background-color: white;
 }
 
-#cabecera{
-    width: 100%;
-    position: sticky;
-    top: 0px;
-    z-index: 2;
-    background-color: white;
+#cabecera {
+	width: 100%;
+	position: sticky;
+	top: 0px;
+	z-index: 2;
+	background-color: white;
 }
 
-#cabecera > div{
-    height: 50px;
-    padding-top: 10px;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-}
-
-#buscar{
-    height: 50%;
-    border-radius: 10px;
-    font-family: Impact;
-}
-
-#categorias > button{
-    height: 50%;
-    width: 10%;
-    border-radius: 10px;
-    font-family: Impact;
-    border: 2px darkgoldenrod solid;
-    background-color: #ff9900;
-}
-
-#categorias > button:hover, #buscar:hover{
-    transform: translateY(-4px);
-    box-shadow: 5px 5px lightblue;
-}
-
-#categorias > button:active{
-    transform: translateX(4px);
-    box-shadow: 0px 0px;  
-    background-color: darkorange;
-    border: 2px black solid;
-}
-
-#buscar:active{
-    transform: translateX(4px);
-    box-shadow: 0px 0px;  
-    border: 2px black solid;
-}
-
-#img{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-}
-
-#img > div{
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    text-align: center;
-}
-
-#img > div > p{
-    margin: 1px 0px;
-    display: flex;
-    align-items: center;
-    z-index: 2;
-}
-
-#img > div > a > img{
-    height: 275px;
-    border-radius: 30px;
-    border: 1px solid black;
-}
-
-#img > div > a:link, a:visited{
-    color: black;
-    text-decoration: none;
-    width: 275px;
-    font-family: Dumb;
-}
-
-#img > div > a:hover, a:active{
-    color: #ff9900;
-    text-decoration: none;
-    text-shadow: 1px 1px lightgray;
-}
-
-#img > div > a > img:hover{
-    transform: translateX(-4px);
-    box-shadow: 10px 10px lightgray;
-}
-
-#img > div > a > img:active{
-    border: 1px solid #ff9900;
-    transform: translateX(3px);
-    box-shadow: none;
-}
-
-#pago{
-	height: 400px;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-}
-
-#vistas{
-    width: 20%;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: space-between;
-}
-
-#vistas > div{
-	height: 120px;
-}
-
-#vistas > div > img{
-	height: 100%;
-    border: 2px solid black;
-}
-
-#grande{
-    width: 40%;
-    display: flex;
-}
-
-#grande > img{
-    width: 100%;
-    border: 2px solid black;
-}
-
-#comprar{
-    width: 30%;
-    padding: 10px;
-    display: flex;
-    flex-flow: column;
-    justify-content: space-around;
-    border: 2px solid black;
-}
-
-#comprar > p, #comprar > h1{
+#cabecera>div {
+	height: 50px;
+	padding-top: 10px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	align-items: center;
 	text-align: center;
 }
 
-#resto > form{
-    width: 1000px;
-    margin: 10px;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
+#buscar {
+	height: 50%;
+	border-radius: 10px;
+	font-family: serif;
 }
 
-#resto > form > div > div{
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
+#categorias>button {
+	height: 50%;
+	width: 10%;
+	border-radius: 10px;
+	font-family: Forte;
+	border: 2px darkgoldenrod solid;
+	background-color: #ff9900;
 }
 
-#resto button{
-    background-color: white;
-    border: none;
-    text-align: center;
+#categorias>button:hover, #buscar:hover, #comprar button:hover {
+	transform: translateY(-4px);
+	box-shadow: 5px 5px lightblue;
 }
 
-#carrito{
-    display: flex;
-    flex-flow: column;
-    align-content: space-around;
+#categorias>button:active, #comprar button:active {
+	transform: translateX(4px);
+	box-shadow: 0px 0px;
+	background-color: darkorange;
+	border: 2px black solid;
 }
 
-#carrito > div{
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    text-align: center;
+#buscar:active {
+	transform: translateX(4px);
+	box-shadow: 0px 0px;
+	border: 2px black solid;
 }
 
-#carrito > div > p{
-    margin: 1px 0px;
-    display: flex;
-    align-items: center;
+#img {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
 }
 
-#carrito > div > a > img{
-    height: 275px;
-    border-radius: 30px;
-    border: 1px solid black;
+#img>div {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	text-align: center;
 }
 
-#carrito > div > a:link, a:visited{
-    color: black;
-    text-decoration: none;
-    width: 275px;
-    font-family: Dumb;
+#img>div>p {
+	margin: 1px 0px;
+	display: flex;
+	align-items: center;
+	z-index: 2;
 }
 
-#carrito > div > a:hover, a:active{
-    color: #ff9900;
-    text-decoration: none;
-    text-shadow: 1px 1px lightgray;
+#img>div>a>img {
+	height: 275px;
+	border-radius: 30px;
+	border: 1px solid black;
 }
 
-#carrito > div > a > img:hover{
-    transform: translateX(-4px);
-    box-shadow: 10px 10px lightgray;
+#img>div>a:link, a:visited {
+	color: black;
+	text-decoration: none;
+	font-family: Segoe Print;
 }
 
-#carrito > div > a > img:active{
-    border: 3px solid #ff9900;
-    transform: translateX(4px);
-    box-shadow: none;
+#img>div>a:hover, a:active {
+	color: #ff9900;
+	text-decoration: none;
+	text-shadow: 1px 1px lightgray;
 }
 
-#carrito button{
-    width: 10%;
-    margin: 10px;
-    border-radius: 10px;
-    font-family: Impact;
-    border: 2px darkgoldenrod solid;
-    background-color: #ff9900;
+#img>div>a>img:hover {
+	transform: translateX(-4px);
+	box-shadow: 10px 10px lightgray;
 }
 
-#carrito button:hover{
-    transform: translateY(-4px);
-    box-shadow: 5px 5px lightblue;
+#img>div>a>img:active {
+	border: 1px solid #ff9900;
+	transform: translateX(3px);
+	box-shadow: none;
 }
 
-#carrito button:active{
-    transform: translateX(4px);
-    box-shadow: 0px 0px;  
-    background-color: darkorange;
-    border: 2px black solid;
+#pago {
+	margin: 20px 0px;
+	height: 400px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
 }
 
-#pie{
-    padding: 10px;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-around;
-    border: 1px solid black;
+#vistas {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: space-between;
 }
 
-#pie > a{
-    color: blue;
+#vistas>div {
+	height: 120px;
+	border: 2px solid black;
 }
 
-#pie > a:hover, #pie > a:visited{
-    color: darkblue;
+#vistas>div>img {
+	height: 100%;
 }
 
-#pie > a:active{
-    color: black;
+#grande {
+	width: 40%;
+	border: 2px solid black;
 }
 
-.rojo{
-    color: red;
-    font-weight: bold;
+#grande>img {
+	height: 100%;
 }
 
-hr{
-    border: 1px dashed lightgray;
+#comprar {
+	width: 40%;
+	padding: 10px;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-around;
+	border: 2px solid black;
 }
 
-th{
-    text-align: center;
-    font-family: Dumb;
-    text-decoration: underline;
+#comprar>div {
+	width: 100%;
+	text-align: center;
 }
 
-td{
-    padding: 10px;
+#comprar p {
+	text-align: center;
 }
 
-p{
-    text-align: justify;
+#comprar button {
+	height: auto;
+	margin: 10px;
+	border-radius: 10px;
+	font-family: Forte;
+	border: 2px darkgoldenrod solid;
+	background-color: #ff9900;
 }
 
-h1, h2{
-    font-size: 30px;
+#resto>form {
+	width: 1000px;
+	margin: 10px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	align-items: center;
+	text-align: center;
 }
 
-img[src*=home], img[src*=carrito], img[src*=ubicacion], input[type*=number]{
-    width: 50px;
+#resto>form>div>div {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
 }
 
-img[src*='azonma.png']{
-    height: 80px;
+#resto button {
+	background-color: white;
+	border: none;
+	text-align: center;
 }
 
-img[src*=enviar]{
-    height: 25px;
+#carrito {
+	display: flex;
+	flex-flow: column;
+	align-content: space-around;
 }
 
-img[src*=estrella], input[type*=text]{
-    margin-right: 5px;
-    height: 25px;
+#carrito>div {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	text-align: center;
 }
 
-input[type*=search]{
-    height: 20px;
-    margin: 30px 0px;
+#carrito>div>p {
+	margin: 1px 0px;
+	display: flex;
+	align-items: center;
 }
 
-@font-face{
-    font-family: Dumb;
-    src: url(/Azonma/fonts/Dumb.ttf);
+#carrito>div>a>img {
+	height: 275px;
+	border-radius: 30px;
+	border: 1px solid black;
+}
+
+#carrito>div>a:link, a:visited {
+	color: black;
+	text-decoration: none;
+	width: 275px;
+	font-family: Segoe Print;
+}
+
+#carrito>div>a:hover, a:active {
+	color: #ff9900;
+	text-decoration: none;
+	text-shadow: 1px 1px lightgray;
+}
+
+#carrito>div>a>img:hover {
+	transform: translateX(-4px);
+	box-shadow: 10px 10px lightgray;
+}
+
+#carrito>div>a>img:active {
+	border: 3px solid #ff9900;
+	transform: translateX(4px);
+	box-shadow: none;
+}
+
+#carrito button {
+	width: 10%;
+	margin: 10px;
+	border-radius: 10px;
+	font-family: Impact;
+	border: 2px darkgoldenrod solid;
+	background-color: #ff9900;
+}
+
+#carrito button:hover {
+	transform: translateY(-4px);
+	box-shadow: 5px 5px lightblue;
+}
+
+#carrito button:active {
+	transform: translateX(4px);
+	box-shadow: 0px 0px;
+	background-color: darkorange;
+	border: 2px black solid;
+}
+
+#pie {
+	padding: 10px;
+	display: flex;
+	flex-flow: row;
+	justify-content: space-around;
+	border: 1px solid black;
+}
+
+#pie>a {
+	color: blue;
+}
+
+#pie>a:hover, #pie>a:visited {
+	color: darkblue;
+}
+
+#pie>a:active {
+	color: black;
+}
+
+.rojo {
+	color: red;
+	font-weight: bold;
+}
+
+hr {
+	border: 1px dashed lightgray;
+}
+
+td {
+	padding: 10px;
+}
+
+p {
+	text-align: justify;
+}
+
+h1 {
+	font-family: Segoe Print;
+	font-size: x-large;
+	text-decoration: underline;
+	text-align: center;
+}
+
+h2, h3 {
+	font-size: 30px;
+}
+
+img[src*=home], img[src*=carrito], img[src*=ubicacion], input[type*=number]
+	{
+	width: 50px;
+}
+
+img[src*='azonma.png'] {
+	height: 80px;
+}
+
+img[src*=enviar] {
+	height: 25px;
+}
+
+img[src*=estrella], input[type*=text] {
+	margin-right: 5px;
+	height: 25px;
+}
+
+input[type*=search] {
+	height: 20px;
+	margin: 30px 0px;
 }
