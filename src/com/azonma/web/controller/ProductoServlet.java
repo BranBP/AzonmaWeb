@@ -51,7 +51,7 @@ public class ProductoServlet extends HttpServlet {
 			String nombreProducto = request.getParameter(ParameterNames.PRODUCTO);    
 			String minValPar = request.getParameter(ParameterNames.VALORACION);   
 
-			ProductoCriteria pc = new ProductoCriteria(); 
+			ProductoCriteria pc = null; 
 
 			boolean hasErrors = false;
 
@@ -87,6 +87,8 @@ public class ProductoServlet extends HttpServlet {
 			}
 
 			// introducimos los datos en el criteria
+			pc = new ProductoCriteria();
+			
 			pc.setPrecioDesde(precioDesde);
 			pc.setPrecioHasta(precioHasta);
 			pc.setMinVal(minVal);

@@ -9,21 +9,25 @@
 <div id="pago">
 	<div id="vistas">
 		<div>
-			<img src="<%=ImagePaths.PRODUCTO%><%=p.getIdProducto()%>/2.jpg"
+			<img
+				src="<%=ImagePaths.PRODUCTO%><%=p.getIdProducto()%><%=ImageFormats.PRODUCTO_PEQUENO1%>"
 				alt="<%=p.getNombre()%>">
 		</div>
 		<div>
-			<img src="<%=ImagePaths.PRODUCTO%><%=p.getIdProducto()%>/3.jpg"
+			<img
+				src="<%=ImagePaths.PRODUCTO%><%=p.getIdProducto()%><%=ImageFormats.PRODUCTO_PEQUENO2%>"
 				alt="<%=p.getNombre()%>">
 		</div>
 		<div>
-			<img src="<%=ImagePaths.PRODUCTO%><%=p.getIdProducto()%>/4.jpg"
+			<img
+				src="<%=ImagePaths.PRODUCTO%><%=p.getIdProducto()%><%=ImageFormats.PRODUCTO_PEQUENO3%>"
 				alt="<%=p.getNombre()%>">
 		</div>
 	</div>
 
 	<div id="grande">
-		<img src="<%=ImagePaths.PRODUCTO%><%=p.getIdProducto()%>/1.jpg"
+		<img
+			src="<%=ImagePaths.PRODUCTO%><%=p.getIdProducto()%><%=ImageFormats.PRODUCTO_GRANDE%>"
 			alt="<%=p.getNombre()%>">
 	</div>
 
@@ -40,28 +44,30 @@
 				<%=p.getPrecio()%>€
 			</p>
 			<p>
-				<i> <small>
-						<%
-							if (p.getValoracion() != 0d) {
-						%> Valoración media: <%=p.getValoracion()%>
-						<%
-							} else {
-						%> Sin valoración <%
-							}
-						%>
-				</small></i>
-			</p>
-			<p>
-				<img alt="" src="<%=ImagePaths.ESTRELLA_VACIA%>"> <img alt=""
-					src="<%=ImagePaths.ESTRELLA_VACIA%>"> <img alt=""
-					src="<%=ImagePaths.ESTRELLA_VACIA%>"> <img alt=""
-					src="<%=ImagePaths.ESTRELLA_VACIA%>"> <img alt=""
-					src="<%=ImagePaths.ESTRELLA_VACIA%>">
+				<i> <small> <%
+ 	if (p.getValoracion() != 0d) {
+ %> Valoración media: <%=p.getValoracion()%> <%
+ 	} else {
+ %> Sin valoración <%
+ 	}
+ %>
+				</small>
+				</i>
 			</p>
 		</div>
 		<div>
-			<button>Comprar</button>
-			<button>Añadir al carrito</button>
+			<form action="">
+				<p>
+					<img src="<%=ImagePaths.ESTRELLA_VACIA%>"> <img
+						src="<%=ImagePaths.ESTRELLA_VACIA%>"> <img
+						src="<%=ImagePaths.ESTRELLA_VACIA%>"> <img
+						src="<%=ImagePaths.ESTRELLA_VACIA%>"> <img
+						src="<%=ImagePaths.ESTRELLA_VACIA%>">
+				</p>
+				<p>Unidades: <input type="number" name="<%=ParameterNames.UNIDADES%>"></p>
+				<button>Comprar</button>
+				<button>Añadir al carrito</button>
+			</form>
 		</div>
 	</div>
 </div>

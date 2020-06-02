@@ -23,6 +23,11 @@ body {
 	background-color: white;
 }
 
+#cabecera2 {
+	width: 100%;
+	background-color: white;
+}
+
 #cabecera>div {
 	height: 50px;
 	padding-top: 10px;
@@ -31,6 +36,12 @@ body {
 	justify-content: space-around;
 	align-items: center;
 	text-align: center;
+}
+
+#cabecera2>div {
+	padding-top: 10px;
+	display: flex;
+	justify-content: space-around;
 }
 
 #buscar {

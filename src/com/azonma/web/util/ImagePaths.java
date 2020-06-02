@@ -11,5 +11,6 @@ public class ImagePaths {
 	public static final String ESTRELLA_VACIA = "/Azonma/img/web/estrellaVacia.png";
 	public static final String ESTRELLA_RELLENA = "/Azonma/img/web/estrellaRellena.png"; 
 
-	public static final String PRODUCTO = "/Azonma/img/product/"; 
+	//	Productos
+	public static final String PRODUCTO = "/Azonma/img/productos/"; 
 }

@@ -13,7 +13,8 @@
 	<div>
 		<a
 			href="<%=ControllerPaths.PRODUCTO%>?<%=ParameterNames.ACCION%>=<%=ActionNames.DETALLE%>&<%=ParameterNames.ID_PRODUCTO%>=<%=p.getIdProducto()%>">
-			<img src="<%=ImagePaths.PRODUCTO%><%=p.getIdProducto()%>/1.jpg"
+			<img
+			src="<%=ImagePaths.PRODUCTO%><%=p.getIdProducto()%><%=ImageFormats.PRODUCTO_GRANDE%>"
 			alt="<%=p.getNombre()%>" />
 		</a>
 		<p>
