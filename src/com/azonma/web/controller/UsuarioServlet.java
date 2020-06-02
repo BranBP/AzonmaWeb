@@ -30,24 +30,17 @@ import com.azonma.web.util.WebUtils;
 @WebServlet("/usuario")
 public class UsuarioServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 1L; 
-
 	private static Logger logger = LogManager.getLogger(UsuarioServlet.class);
-
+	
+	private static final long serialVersionUID = 1L; 
 	private UsuarioService usuarioService = null;
-
 
 	public UsuarioServlet() {
 		super();
 		usuarioService = new UsuarioServiceImpl(); 
-
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		if (logger.isDebugEnabled()) {
-			logger.debug(WebUtils.prettyParameters(request));
-		}
 
 		String accion = request.getParameter(ParameterNames.ACCION);  
 		String target = null;
@@ -117,12 +110,12 @@ public class UsuarioServlet extends HttpServlet {
 			u.setIdIdioma(idioma);
 
 			if(hasErrors) {
-				target = ViewPaths.LOGIN;     
+				target = ViewPaths.LOGIN;    
+				redirect = true;   
 			}else {
 
 				// Se continúa con las operaciones en la capa de negocio
-				target = ViewPaths.HOME;   
-				redirect = true; 
+				target = ViewPaths.RESULTADOS;   
 
 				try {
 
