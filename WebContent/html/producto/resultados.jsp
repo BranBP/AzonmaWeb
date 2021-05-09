@@ -1,3 +1,4 @@
+<%@page import="java.io.Console"%>
 <%@page import="com.azonma.service.impl.ProductoServiceImpl"%>
 <%@page import="com.azonma.service.ProductoService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,20 +12,16 @@
 		if (productos == null) {
 
 			productos = new ArrayList<Producto>();
-			Producto p = new Producto();
+			Producto producto;
 
 			ProductoServiceImpl productoService = new ProductoServiceImpl();
+			
+			long id = 0;
 
-			int i = 1;
-
-			while (i <= 6) {
-
-				p = productoService.findById(Math.round(Math.random() * 32));
-
-				if (!productos.contains(p.getIdProducto())) {
-					productos.add(p);
-					i++;
-				}
+			for (int i=0;i<5;i++){
+				id = Math.round(Math.random() * 11) + 1;
+				producto = productoService.findById( id );
+				if( !productos.contains(id) ) productos.add(producto);
 			}
 		}
 

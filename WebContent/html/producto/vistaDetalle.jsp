@@ -64,7 +64,9 @@
 						src="<%=ImagePaths.ESTRELLA_VACIA%>"> <img
 						src="<%=ImagePaths.ESTRELLA_VACIA%>">
 				</p>
-				<p>Unidades: <input type="number" name="<%=ParameterNames.UNIDADES%>"></p>
+				<p>
+					Unidades: <input type="number" name="<%=ParameterNames.UNIDADES%>">
+				</p>
 				<button>Comprar</button>
 				<button>Añadir al carrito</button>
 			</form>

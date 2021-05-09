@@ -10,6 +10,9 @@
 </head>
 
 <body>
+	<%
+		Usuario u = (Usuario) request.getAttribute(AttributeNames.USUARIO);
+	%>
 	<div id="contenedor">
 		<div id="cabecera">
 			<div>
@@ -29,7 +32,14 @@
 					alt="Carrito" title="Carrito" /></a>
 				<!-- Aquí iría la cuenta, login,...etc -->
 				<p>
-					Hola Usuari@.<br />Bienvenido!
+					Hola
+					<%
+					if (u != null) {
+						u.getNombre();
+						u.getApellido1();
+						u.getApellido2();
+					}
+				%>.<br />Bienvenido!
 				</p>
 			</div>
 			<div>

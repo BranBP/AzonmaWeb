@@ -110,8 +110,7 @@ public class UsuarioServlet extends HttpServlet {
 			u.setIdIdioma(idioma);
 
 			if(hasErrors) {
-				target = ViewPaths.LOGIN;    
-				redirect = true;   
+				target = ViewPaths.LOGIN; 
 			}else {
 
 				// Se continúa con las operaciones en la capa de negocio
@@ -119,7 +118,7 @@ public class UsuarioServlet extends HttpServlet {
 
 				try {
 
-					usuarioService.create(u); 
+					u = usuarioService.create(u);  
 
 					request.setAttribute(AttributeNames.USUARIO, u);  
 

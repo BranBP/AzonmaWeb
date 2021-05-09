@@ -55,8 +55,8 @@ body {
 	width: 10%;
 	border-radius: 10px;
 	font-family: Forte;
-	border: 2px darkgoldenrod solid;
-	background-color: #ff9900;
+	border: 2px #005bbe solid;
+	background-color: #0099cb;
 }
 
 #categorias>button:hover, #buscar:hover, #comprar button:hover {
@@ -67,7 +67,7 @@ body {
 #categorias>button:active, #comprar button:active {
 	transform: translateX(4px);
 	box-shadow: 0px 0px;
-	background-color: darkorange;
+	background-color: #bbac0b;
 	border: 2px black solid;
 }
 
@@ -182,8 +182,8 @@ body {
 	margin: 10px;
 	border-radius: 10px;
 	font-family: Forte;
-	border: 2px darkgoldenrod solid;
-	background-color: #ff9900;
+	border: 2px #005bbe solid;
+	background-color: #0099cb;
 }
 
 #resto>form {
